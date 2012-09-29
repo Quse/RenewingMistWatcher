@@ -1,0 +1,84 @@
+﻿<Ui xmlns="http://www.blizzard.com/wow/ui/" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.blizzard.com/wow/ui/ 
+..\..\FrameXML\UI.xsd">
+<Script file="RenewingMistWatcher.lua"/>
+
+
+<!-- MyFrameRMW -->
+	<Frame name="MyFrameRMW" frameStrata="medium" parent="UIParent">
+<!-- Scripts -->
+		<Scripts>
+			<OnLoad>RMW_OnLoad();</OnLoad>
+			<OnDragStart>self:StartMoving();</OnDragStart>
+			<OnDragStop>self:StopMovingOrSizing();</OnDragStop>
+			<OnEvent>RMW_OnEvent(self, event, ...)</OnEvent>
+		</Scripts>
+<!-- Backdrops -->
+		<Backdrop bgFile="Interface\ChatFrame\ChatFrameBackground" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="false">
+			<BackgroundInsets>
+				<AbsInset left="1" right="1" top="1" bottom="1"/>
+			</BackgroundInsets>	
+		</Backdrop>
+<!-- Frames -->
+		<Frames>
+	<!-- Right text -->
+			<Frame name="MyFrameRMWChild1" parent="MyFrameRMW" enableMouse="false" frameStrata="HIGH">
+				<Backdrop bgFile="Interface\Icons\ability_monk_renewingmists" tile="false"/>
+				<Size x="28" y="28" />
+				<Anchors>
+					<Anchor point="RIGHT" relativeTo="$parent" RelativePoint="RIGHT" x="-76" y ="0"/>
+				</Anchors>
+				<Layers>
+					<Layer frameStrata="DIALOG">
+							<FontString name="MyFrameRMWTOPRIGHTText" inherits="GameFontNormalLarge" maxLines = "1"/>
+					</Layer>
+				</Layers>
+			</Frame>
+	<!-- Left text -->
+			<Frame name="MyFrameRMWChild2" parent="MyFrameRMW" enableMouse="false" frameStrata="HIGH">
+				<Backdrop bgFile="Interface\Icons\spell_monk_mistweaver_spec" tile="false"/>
+				<Size x="28" y="28" />
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parent" RelativePoint="LEFT" y="0" x="76"/>
+				</Anchors>
+				<Layers>
+					<Layer frameStrata="DIALOG">
+							<FontString name="MyFrameRMWTOPLEFTText" inherits="GameFontNormalLarge" maxLines = "1"/>
+					</Layer>
+				</Layers>
+			</Frame>
+	<!-- Background Bar -->
+			<Frame name="MyFrameRMWChild3" parent="MyFrameRMW" enableMouse="false" frameStrata="HIGH">
+				<Backdrop bgFile="Interface\ChatFrame\ChatFrameBackground" tile="false"/>
+				<Size x="142" y="14" />
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeTo="$parent" RelativePoint="BOTTOMLEFT" x="0" y="0"/>
+				</Anchors>
+			</Frame>
+	<!-- Foreground bar -->
+			<StatusBar name="RMW_castbar" parent="MyFrameRMWChild3" enableMouse="false" frameStrata="HIGH" minvalue="0" maxvalue="1">
+				<Backdrop bgFile="Interface\ChatFrame\ChatFrameBackground" tile="false"/>
+				<Size x="142" y="12" />
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="MyFrameRMWChild3" RelativePoint="LEFT"/>
+				</Anchors>
+				<Scripts>
+					<OnValueChanged>RMW_UpdateCastBar(self, value);</OnValueChanged>
+				</Scripts>
+			</StatusBar>
+		</Frames>
+<!-- Layers -->
+		<Layers>
+			<Layer frameStrata="DIALOG">
+					<FontString name="$parentMIDDLEText" inherits="GameFontNormalLarge" maxLines = "1">
+					  <Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parent" RelativePoint="TOPLEFT" y="-54"/>
+						<Anchor point="TOPRIGHT" relativeTo="$parent" RelativePoint="TOPRIGHT"/>
+					  </Anchors>
+					</FontString>
+			</Layer>
+		</Layers>
+		<Size x="150" y="88" /> <!-- 75 vers 88 pour faire de la place pour la barre -->
+	</Frame>
+</Ui>

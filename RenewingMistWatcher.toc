@@ -1,0 +1,8 @@
+## Interface: 50001
+## Author: Nion
+## Title: RenewingMistWatcher
+## Notes: This AddOn tracks the time left on your shorter Renewing Mists, as well as the number of active Renewing Mist.
+## Version : 0.4.0
+##SavedVariablesPerCharacter: RMW_Backdrop, RMW_BackdropBorder, RMW_Scale, RMW_AutohideState, RMW_LockState, RMW_Position, RMW_IconsState, RMW_BarShowed, RMW_BackdropBarBG, RMW_BackdropBarFG, RMW_IgnorePets
+RenewingMistWatcher.xml
+RenewingMistWatcher.lua
